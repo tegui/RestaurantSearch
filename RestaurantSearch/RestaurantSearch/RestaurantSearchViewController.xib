@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RestaurantSearchViewController" customModule="RestaurantSearch" customModuleProvider="target">
+            <connections>
+                <outlet property="activityBackground" destination="3tp-0K-2vb" id="1nQ-1d-d1x"/>
+                <outlet property="activityView" destination="ach-3l-28s" id="cfM-6A-Vg7"/>
+                <outlet property="citySearchTextField" destination="FV4-IH-oJd" id="rmD-SZ-Ljc"/>
+                <outlet property="currentCityButton" destination="42c-eT-QwH" id="NDg-1w-qRT"/>
+                <outlet property="loaderReasonContainerView" destination="GOR-CU-4Xd" id="CaQ-Vp-Z3B"/>
+                <outlet property="loaderReasonLabel" destination="dBu-uO-TES" id="wUA-Hl-Ap1"/>
+                <outlet property="resultsTableView" destination="6t7-tu-GsU" id="6eb-4f-e0Z"/>
+                <outlet property="searchButton" destination="oFb-hf-7tX" id="25Y-ID-i7x"/>
+                <outlet property="view" destination="iN0-l3-epB" id="qmS-Ak-KLV"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search your cuisine or restaurant" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FV4-IH-oJd">
+                    <rect key="frame" x="30" y="104" width="299" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42c-eT-QwH">
+                    <rect key="frame" x="30" y="61" width="299" height="28"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Current City: --"/>
+                    <connections>
+                        <action selector="currentCityAction:" destination="-1" eventType="touchUpInside" id="gtN-Dn-O5A"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6t7-tu-GsU">
+                    <rect key="frame" x="0.0" y="158" width="414" height="738"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="GVs-aX-6nu"/>
+                        <outlet property="delegate" destination="-1" id="IPu-0Y-dsn"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFb-hf-7tX">
+                    <rect key="frame" x="344" y="106" width="55" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="55" id="EfO-sF-mUO"/>
+                    </constraints>
+                    <state key="normal" title="Search"/>
+                    <connections>
+                        <action selector="searchAction:" destination="-1" eventType="touchUpInside" id="L8a-uJ-7RO"/>
+                    </connections>
+                </button>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3tp-0K-2vb">
+                    <rect key="frame" x="157" y="398" width="100" height="100"/>
+                    <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="2eO-Eb-GiA"/>
+                        <constraint firstAttribute="width" constant="100" id="Rvp-bc-M4m"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ach-3l-28s">
+                    <rect key="frame" x="197" y="438" width="20" height="20"/>
+                    <color key="color" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </activityIndicatorView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOR-CU-4Xd">
+                    <rect key="frame" x="10" y="510.5" width="394" height="60"/>
+                    <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="zJU-03-gn5"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fetching your city information" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBu-uO-TES">
+                    <rect key="frame" x="15" y="510.5" width="384" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="Up4-RU-Bp0"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="oFb-hf-7tX" firstAttribute="leading" secondItem="FV4-IH-oJd" secondAttribute="trailing" constant="15" id="5Wv-MC-gvw"/>
+                <constraint firstItem="oFb-hf-7tX" firstAttribute="centerY" secondItem="FV4-IH-oJd" secondAttribute="centerY" id="9p6-WZ-Pq4"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dBu-uO-TES" secondAttribute="trailing" constant="15" id="KiA-S7-EAH"/>
+                <constraint firstItem="dBu-uO-TES" firstAttribute="top" secondItem="GOR-CU-4Xd" secondAttribute="top" id="Odg-UH-CbB"/>
+                <constraint firstItem="FV4-IH-oJd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="P6q-jb-G7x"/>
+                <constraint firstItem="42c-eT-QwH" firstAttribute="width" secondItem="FV4-IH-oJd" secondAttribute="width" id="TSB-hZ-nM6"/>
+                <constraint firstItem="3tp-0K-2vb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Tm1-Iy-6wq"/>
+                <constraint firstItem="GOR-CU-4Xd" firstAttribute="top" secondItem="3tp-0K-2vb" secondAttribute="bottom" constant="12.5" id="U3S-rI-ASF"/>
+                <constraint firstItem="6t7-tu-GsU" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="U3z-7D-FOn"/>
+                <constraint firstItem="FV4-IH-oJd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="60" id="ZVD-Lz-8hN"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GOR-CU-4Xd" secondAttribute="trailing" constant="10" id="Za8-Gd-awb"/>
+                <constraint firstItem="ach-3l-28s" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="aGg-Fs-E3j"/>
+                <constraint firstAttribute="bottom" secondItem="6t7-tu-GsU" secondAttribute="bottom" id="g1P-wf-Hqd"/>
+                <constraint firstItem="ach-3l-28s" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="haL-aI-4aK"/>
+                <constraint firstItem="42c-eT-QwH" firstAttribute="leading" secondItem="FV4-IH-oJd" secondAttribute="leading" id="jPX-Oy-KX1"/>
+                <constraint firstItem="dBu-uO-TES" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="mdr-x7-hfq"/>
+                <constraint firstItem="6t7-tu-GsU" firstAttribute="top" secondItem="FV4-IH-oJd" secondAttribute="bottom" constant="20" id="pEQ-nU-x5M"/>
+                <constraint firstItem="3tp-0K-2vb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="pRU-8s-7F2"/>
+                <constraint firstItem="FV4-IH-oJd" firstAttribute="top" secondItem="42c-eT-QwH" secondAttribute="bottom" constant="15" id="q9F-5u-u87"/>
+                <constraint firstItem="6t7-tu-GsU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="qtY-Ao-7WO"/>
+                <constraint firstItem="GOR-CU-4Xd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="xWj-6x-Ndm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="oFb-hf-7tX" secondAttribute="trailing" constant="15" id="yQc-f0-b01"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
+        </view>
+    </objects>
+</document>
